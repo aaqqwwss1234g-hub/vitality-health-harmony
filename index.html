@@ -1081,5 +1081,37 @@
       }
     }
   </script>
+  <!-- زر تثبيت التطبيق العائم -->
+<button id="installBtn" style="display:none; position:fixed; bottom:75px; left:20px; z-index:9999; background:#10b981; color:#fff; border:none; padding:12px 20px; border-radius:30px; font-weight:bold; box-shadow:0 4px 12px rgba(0,0,0,0.4); cursor:pointer;">
+  📲 تثبيت التطبيق
+</button>
+
+<script>
+  // تسجيل ملف الخدمة
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
+
+  // إظهار زر التثبيت تلقائياً عند توفره
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'block';
+  });
+
+  installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        installBtn.style.display = 'none';
+      }
+      deferredPrompt = null;
+    }
+  });
+</script>
 </body>
 </html>
