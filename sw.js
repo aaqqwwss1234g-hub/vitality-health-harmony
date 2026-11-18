@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vitality-v3';
+const CACHE_NAME = 'vitality-v5';
 const urlsToCache = [
   '/',
   '/index.html',
