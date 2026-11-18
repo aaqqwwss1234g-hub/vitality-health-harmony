@@ -1,0 +1,16 @@
+{
+ "name": "حيوية | صحة انسجام",
+ "short_name": "حيوية",
+ "start_url": "/",
+ "display": "standalone",
+ "background_color": "#121212",
+ "theme_color": "#2e7d32",
+ "icons": [
+ {
+ "src": "assets/logo.png",
+ "sizes": "512x512",
+ "type": "image/png",
+ "purpose": "any maskable"
+ }
+ ]
+}
