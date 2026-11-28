@@ -1,0 +1,2593 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>متجر مكملات فايتالي</title>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://i.postimg.cc" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+  <style>
+    :root {
+      --bg-color: #0b0e12;
+      --bg-elevated: #12161c;
+      --card-bg: #161b22;
+      --card-soft: #10141a;
+      --text-color: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-green: #22c55e;
+      --accent-deep: #15803d;
+      --accent-light: #4ade80;
+      --border-color: #262e3a;
+      --header-bg: rgba(13, 16, 21, 0.94);
+      --bottom-nav-bg: rgba(16, 20, 27, 0.92);
+      --input-bg: #161b22;
+      --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.52);
+    }
+
+    body.light-theme {
+      --bg-color: #f4f7f5;
+      --bg-elevated: #ffffff;
+      --card-bg: #ffffff;
+      --card-soft: #eef3f0;
+      --text-color: #0f172a;
+      --text-muted: #526071;
+      --accent-green: #16a34a;
+      --accent-deep: #15803d;
+      --accent-light: #15803d;
+      --border-color: #dce5df;
+      --header-bg: rgba(255, 255, 255, 0.94);
+      --bottom-nav-bg: rgba(255, 255, 255, 0.94);
+      --input-bg: #f1f5f2;
+      --shadow-soft: 0 10px 26px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Tahoma, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding-bottom: 96px;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header-container {
+      padding: 8px 12px;
+      background: var(--header-bg);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 120;
+      border-bottom: 1px solid var(--border-color);
+      height: 58px;
+      display: flex;
+      align-items: center;
+      transition: background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .top-nav-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      width: 100%;
+    }
+
+    .header-menu-btn {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.22), rgba(21, 128, 61, 0.08));
+      border: 1px solid rgba(34, 197, 94, 0.42);
+      border-radius: 11px;
+      color: var(--accent-light);
+      font-size: 1.08rem;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.16s ease, border-color 0.2s;
+    }
+
+    .header-menu-btn:active {
+      transform: scale(0.92);
+    }
+
+    .header-logo {
+      color: var(--accent-light);
+      font-weight: 900;
+      font-size: 1.12rem;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      cursor: pointer;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: var(--input-bg);
+      border-radius: 11px;
+      padding: 6px 10px;
+      border: 1.5px solid var(--border-color);
+      transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .search-box:focus-within {
+      border-color: var(--accent-green);
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.14);
+    }
+
+    .search-box input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-color);
+      width: 100%;
+      font-size: 0.83rem;
+      text-align: right;
+      min-width: 0;
+    }
+
+    .search-box input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .search-box i {
+      color: var(--accent-light);
+      font-size: 0.88rem;
+      margin-right: 5px;
+      flex-shrink: 0;
+    }
+
+    .clear-search-btn {
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0 4px;
+      display: none;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+    }
+
+    .header-icon-btn {
+      position: relative;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 11px;
+      color: var(--text-color);
+      font-size: 1.02rem;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.16s ease, border-color 0.2s, color 0.2s, background-color 0.2s;
+    }
+
+    .header-icon-btn:hover {
+      border-color: var(--accent-green);
+      color: var(--accent-light);
+    }
+
+    .header-icon-btn:active {
+      transform: scale(0.92);
+    }
+
+    .theme-toggle-btn {
+      color: #f59e0b;
+    }
+
+    body:not(.light-theme) .theme-toggle-btn {
+      color: #fde047;
+    }
+
+    .header-cart-badge {
+      background: linear-gradient(135deg, #22c55e, #15803d);
+      color: #fff;
+      font-size: 0.64rem;
+      min-width: 17px;
+      height: 17px;
+      padding: 0 4px;
+      border-radius: 999px;
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--bg-elevated);
+    }
+
+    .hero-promo-wrapper {
+      margin: 12px 14px 10px 14px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-soft);
+      background: var(--card-bg);
+    }
+
+    .hero-slides-track {
+      display: flex;
+      width: 300%;
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .hero-slide {
+      width: 33.3333%;
+      padding: 16px 16px 28px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-slide.slide-energy {
+      background: linear-gradient(135deg, rgba(21, 128, 61, 0.32) 0%, var(--card-bg) 62%, var(--card-soft) 100%);
+    }
+
+    .hero-slide.slide-vitamins {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.28) 0%, var(--card-bg) 62%, var(--card-soft) 100%);
+    }
+
+    .hero-slide.slide-protein {
+      background: linear-gradient(135deg, rgba(217, 119, 6, 0.28) 0%, var(--card-bg) 62%, var(--card-soft) 100%);
+    }
+
+    .hero-slide-content {
+      flex: 1;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.68rem;
+      font-weight: bold;
+      padding: 3px 9px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
+
+    .hero-title {
+      color: var(--text-color);
+      font-size: 1.02rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      line-height: 1.45;
+      margin-bottom: 9px;
+    }
+
+    .hero-cta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      font-weight: bold;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.14);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      color: var(--text-color);
+      transition: background 0.2s;
+    }
+
+    .hero-visual-box {
+      width: 76px;
+      height: 76px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      flex-shrink: 0;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+    }
+
+    .hero-dots {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 5;
+    }
+
+    .hero-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.45);
+      border: none;
+      cursor: pointer;
+      transition: width 0.28s ease, background-color 0.28s ease;
+    }
+
+    .hero-dot.active {
+      width: 22px;
+      background: var(--accent-green);
+    }
+
+    .categories-sticky-wrap {
+      position: sticky;
+      top: 58px;
+      z-index: 110;
+      background: var(--header-bg);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 2px 0;
+      transition: background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .categories-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 9px 14px;
+      scrollbar-width: none;
+    }
+    .categories-bar::-webkit-scrollbar { display: none; }
+
+    .cat-item {
+      background: var(--card-bg);
+      color: var(--text-muted);
+      padding: 8px 15px;
+      border-radius: 14px;
+      font-size: 0.81rem;
+      font-weight: bold;
+      white-space: nowrap;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .cat-item i {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .cat-item:hover {
+      border-color: var(--accent-green);
+      color: var(--text-color);
+    }
+
+    .cat-item.active {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.22), rgba(21, 128, 61, 0.14));
+      color: var(--text-color);
+      border-color: var(--accent-green);
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.16);
+    }
+
+    .cat-item.active i {
+      color: var(--accent-light);
+      transform: scale(1.06);
+    }
+
+    .catalog-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px 6px 14px;
+      width: 100%;
+    }
+
+    .layout-toggle-fancy {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 11px;
+      padding: 7px 11px;
+      color: var(--accent-light);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .layout-toggle-fancy:hover {
+      border-color: var(--accent-green);
+    }
+
+    .layout-toggle-fancy:active {
+      transform: scale(0.93);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 10px 14px;
+    }
+
+    .products-grid.cols-3 {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .products-grid.cols-3 .product-card {
+      padding: 7px;
+      font-size: 0.75rem;
+    }
+    .products-grid.cols-4 {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+    }
+    .products-grid.cols-4 .product-card {
+      padding: 5px;
+      font-size: 0.65rem;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      content-visibility: auto;
+      contain-intrinsic-size: 265px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.25s ease;
+    }
+
+    .product-card:hover {
+      border-color: var(--accent-green);
+      transform: translateY(-2px);
+    }
+
+    .prod-brand {
+      font-size: 0.71rem;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .prod-title {
+      font-size: 0.82rem;
+      font-weight: bold;
+      color: var(--text-color);
+      margin-bottom: 8px;
+      height: 36px;
+      line-height: 1.3;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .prod-img-box {
+      background: var(--card-soft);
+      border-radius: 12px;
+      height: 152px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-bottom: 8px;
+      padding: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid rgba(148, 163, 184, 0.12);
+    }
+
+    .prod-img-box img {
+      max-width: 150%;
+      max-height: 220px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+    }
+
+    .prod-img-box:hover img {
+      transform: scale(1.04);
+    }
+
+    .img-actions {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      z-index: 2;
+    }
+
+    .action-icon {
+      background: rgba(15, 23, 42, 0.68);
+      color: #ffffff;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 0.74rem;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+    }
+
+    .action-icon:active {
+      transform: scale(0.9);
+    }
+
+    .prod-price {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: var(--accent-light);
+      margin-bottom: 7px;
+    }
+
+    .btn-add-cart {
+      background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
+      color: #ffffff;
+      border: none;
+      width: 100%;
+      padding: 8px 6px;
+      border-radius: 11px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      touch-action: manipulation;
+      box-shadow: 0 4px 12px rgba(21, 128, 61, 0.25);
+      transition: transform 0.15s ease, filter 0.2s ease;
+    }
+    .btn-add-cart:hover { filter: brightness(1.06); }
+    .btn-add-cart:active { transform: scale(0.96); }
+
+    .more-options {
+      font-size: 0.71rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 6px;
+      cursor: pointer;
+    }
+
+    .load-more-container {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .btn-load-more {
+      background: var(--card-bg);
+      color: var(--accent-light);
+      border: 1px solid var(--accent-green);
+      padding: 10px 24px;
+      border-radius: 25px;
+      font-size: 0.88rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .btn-load-more:hover {
+      background: var(--accent-deep);
+      color: #fff;
+    }
+
+    .health-hub-section {
+      margin: 15px 14px 12px 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .health-hub-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .health-hub-title {
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .health-hub-arrow {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--card-soft);
+      border: 1px solid var(--border-color);
+      color: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .health-hub-pills {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+    .health-hub-pills::-webkit-scrollbar { display: none; }
+
+    .hub-pill {
+      background: var(--card-soft);
+      color: var(--text-color);
+      border: 1px solid var(--border-color);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.83rem;
+      font-weight: bold;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .hub-pill:hover, .hub-pill.active {
+      background: rgba(34, 197, 94, 0.18);
+      border-color: var(--accent-green);
+      color: var(--accent-light);
+    }
+
+    .back-to-top-btn {
+      position: fixed;
+      bottom: 86px;
+      left: 14px;
+      background: var(--card-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      padding: 8px 15px;
+      font-size: 0.82rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: var(--shadow-soft);
+      cursor: pointer;
+      z-index: 140;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.2s;
+    }
+
+    .back-to-top-btn.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 10px;
+      left: 14px;
+      right: 14px;
+      background: var(--bottom-nav-bg);
+      backdrop-filter: blur(14px);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 22px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-soft);
+      z-index: 150;
+      transition: background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      padding: 6px 16px;
+      border-radius: 15px;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .nav-item i {
+      font-size: 1.15rem;
+      margin-bottom: 3px;
+    }
+
+    .nav-item:hover {
+      color: var(--text-color);
+    }
+
+    .nav-item.active {
+      color: var(--accent-light);
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .nav-item.whatsapp-nav:hover {
+      color: #22c55e;
+    }
+
+    .cart-badge {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: white;
+      font-size: 0.65rem;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 5px;
+      border-radius: 999px;
+      position: absolute;
+      top: -5px;
+      right: -10px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--bg-elevated);
+    }
+
+    .side-drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.62);
+      backdrop-filter: blur(4px);
+      z-index: 240;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease;
+    }
+
+    .side-drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .side-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 84%;
+      max-width: 340px;
+      height: 100%;
+      background: var(--bg-elevated);
+      border-left: 1px solid var(--border-color);
+      box-shadow: -12px 0 35px rgba(0, 0, 0, 0.35);
+      z-index: 250;
+      transform: translateX(105%);
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .side-drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 18px;
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+
+    .drawer-brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-weight: 900;
+      font-size: 1.12rem;
+      color: var(--accent-light);
+    }
+
+    .drawer-close-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--card-soft);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .drawer-user-pill {
+      margin: 12px 12px 4px 12px;
+      padding: 11px 13px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .drawer-list {
+      padding: 8px 12px 24px 12px;
+    }
+
+    .drawer-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      border-radius: 12px;
+      color: var(--text-color);
+      font-size: 0.94rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.18s ease, transform 0.15s ease, color 0.18s ease;
+      margin-bottom: 3px;
+    }
+
+    .drawer-item:hover {
+      background: rgba(34, 197, 94, 0.12);
+      color: var(--accent-light);
+      transform: translateX(-3px);
+    }
+
+    .drawer-item-right {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .drawer-item-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: rgba(34, 197, 94, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.88rem;
+      color: var(--accent-light);
+    }
+
+    .drawer-item i.chevron {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .drawer-divider {
+      height: 1px;
+      background: var(--border-color);
+      margin: 10px 6px;
+    }
+
+    .drawer-section-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: bold;
+      padding: 4px 14px 8px 14px;
+    }
+
+    .drawer-item.offers-highlight {
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.22);
+    }
+
+    .drawer-item.offers-highlight .drawer-item-icon {
+      background: rgba(239, 68, 68, 0.16);
+      color: #ef4444;
+    }
+
+    .overlay-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-color);
+      color: var(--text-color);
+      z-index: 200;
+      display: none;
+      flex-direction: column;
+      padding: 15px;
+      overflow-y: auto;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+    .overlay-screen.active { display: flex; animation: fadeIn 0.18s ease; }
+
+    .top-bar-detail {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 11px;
+      position: sticky;
+      top: -15px;
+      background: var(--bg-color);
+      z-index: 10;
+      padding-top: 6px;
+    }
+
+    .explore-section-title {
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--text-color);
+      margin: 14px 0 4px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .explore-section-sub {
+      font-size: 0.77rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .explore-cards-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .explore-visual-card {
+      position: relative;
+      height: 118px;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 10px 8px;
+      text-align: center;
+      transition: transform 0.18s ease;
+    }
+
+    .explore-visual-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .explore-visual-card .bg-icon {
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2.1rem;
+      opacity: 0.9;
+    }
+
+    .explore-visual-card .card-label {
+      position: relative;
+      z-index: 2;
+      font-size: 0.82rem;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.65);
+      line-height: 1.25;
+    }
+
+    .featured-grid-bento {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .bento-col-left {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .bento-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 12px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .bento-card:hover {
+      border-color: var(--accent-green);
+    }
+
+    .bento-card.tall {
+      min-height: 176px;
+    }
+
+    .bento-card.short {
+      min-height: 84px;
+    }
+
+    .bento-card-title {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: var(--text-color);
+      z-index: 2;
+    }
+
+    .bento-card-sub {
+      font-size: 0.72rem;
+      color: var(--accent-light);
+      margin-top: 3px;
+      z-index: 2;
+    }
+
+    .bento-card-img {
+      align-self: flex-end;
+      max-height: 85px;
+      max-width: 85px;
+      object-fit: contain;
+      margin-top: 6px;
+    }
+
+    .trending-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .trending-mini-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 15px;
+      padding: 10px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .trending-mini-card:hover {
+      border-color: var(--accent-green);
+    }
+
+    .brands-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .brand-pill-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 14px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .brand-pill-card:hover {
+      border-color: var(--accent-green);
+      transform: translateY(-2px);
+    }
+
+    .cart-item-card {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      background: var(--card-bg);
+      padding: 12px;
+      border-radius: 16px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .cart-thumb-box {
+      width: 58px;
+      height: 58px;
+      border-radius: 12px;
+      background: var(--card-soft);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
+      flex-shrink: 0;
+    }
+
+    .cart-thumb-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .cart-summary-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 14px 16px;
+      margin-top: 10px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .login-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(7, 10, 15, 0.72);
+      backdrop-filter: blur(8px);
+      z-index: 320;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .login-modal-backdrop.open {
+      display: flex;
+      animation: fadeIn 0.22s ease;
+    }
+
+    .login-modal-card {
+      width: 100%;
+      max-width: 390px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 22px 20px;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45);
+      position: relative;
+    }
+
+    .login-input-group {
+      margin-bottom: 12px;
+    }
+
+    .login-input-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: bold;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+    }
+
+    .login-input-box {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background: var(--input-bg);
+      border: 1.5px solid var(--border-color);
+      border-radius: 13px;
+      padding: 10px 12px;
+      transition: border-color 0.2s;
+    }
+
+    .login-input-box:focus-within {
+      border-color: var(--accent-green);
+    }
+
+    .login-input-box i {
+      color: var(--accent-light);
+      font-size: 0.9rem;
+    }
+
+    .login-input-box input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-color);
+      width: 100%;
+      font-size: 0.88rem;
+      text-align: right;
+    }
+
+    .btn-skip-login {
+      width: 100%;
+      margin-top: 9px;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      padding: 10px;
+      border-radius: 12px;
+      font-size: 0.84rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-skip-login:hover {
+      color: var(--text-color);
+      border-color: var(--accent-green);
+      background: rgba(34, 197, 94, 0.06);
+    }
+
+    .toast-msg {
+      position: fixed;
+      bottom: 88px;
+      left: 50%;
+      transform: translate3d(-50%, 20px, 0);
+      background: linear-gradient(135deg, #22c55e, #15803d);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-size: 0.84rem;
+      font-weight: bold;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.28);
+      z-index: 350;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      white-space: nowrap;
+    }
+    .toast-msg.show {
+      opacity: 1;
+      transform: translate3d(-50%, 0, 0);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="toastBox" class="toast-msg"></div>
+
+  <div id="loginModalBackdrop" class="login-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+    <div class="login-modal-card">
+      <div style="text-align: center; margin-bottom: 16px;">
+        <div style="width: 54px; height: 54px; margin: 0 auto 10px auto; border-radius: 16px; background: rgba(34, 197, 94, 0.14); border: 1px solid rgba(34, 197, 94, 0.35); display: flex; align-items: center; justify-content: center; color: var(--accent-light); font-size: 1.5rem;">
+          <i class="fas fa-leaf"></i>
+        </div>
+        <h2 id="loginModalTitle" style="font-size: 1.12rem; font-weight: 900; color: var(--text-color); margin-bottom: 4px;">مرحباً بك في فايتالي Vitali</h2>
+        <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.45;">سجّل دخولك لتجربة أسرع، أو تخطّ الخطوة وتصفح المتجر مباشرة.</p>
+      </div>
+
+      <form id="loginForm" onsubmit="submitQuickLogin(event)">
+        <div class="login-input-group">
+          <label for="loginNameInput">الاسم الكريم</label>
+          <div class="login-input-box">
+            <i class="far fa-user"></i>
+            <input type="text" id="loginNameInput" placeholder="اكتب اسمك (اختياري أو مطلوب)" autocomplete="name">
+          </div>
+        </div>
+
+        <div class="login-input-group">
+          <label for="loginPhoneInput">رقم الجوال / الواتساب</label>
+          <div class="login-input-box">
+            <i class="fas fa-phone-alt"></i>
+            <input type="tel" id="loginPhoneInput" placeholder="مثال: 777xxxxxx" dir="ltr" style="text-align: right;" autocomplete="tel">
+          </div>
+        </div>
+
+        <button type="submit" class="btn-add-cart" style="padding: 11px; font-size: 0.88rem; margin-top: 4px;">
+          <i class="fas fa-sign-in-alt"></i>
+          <span>تسجيل الدخول والمتابعة</span>
+        </button>
+      </form>
+
+      <button type="button" class="btn-skip-login" onclick="skipLoginModal()">
+        تخطي والمتابعة كضيف <i class="fas fa-arrow-left" style="font-size: 0.75rem; margin-right: 4px;"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="header-container">
+    <div class="top-nav-row">
+      <button class="header-menu-btn" onclick="openSideDrawer()" title="القائمة الرئيسية والأقسام">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="header-logo" onclick="resetToAllHome()">Vitali</div>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="البحث في فايتالي..." oninput="handleSearch()">
+        <span id="clearSearchBtn" class="clear-search-btn" onclick="clearSearch()" title="مسح البحث">✕</span>
+        <i class="fas fa-search"></i>
+      </div>
+      <button id="themeToggleBtn" class="header-icon-btn theme-toggle-btn" onclick="toggleThemeMode()" title="تبديل الوضع الليلي / العادي" aria-label="تبديل الوضع الليلي والعادي">
+        <i id="themeIcon" class="fas fa-sun"></i>
+      </button>
+      <button class="header-icon-btn" onclick="openCartScreen()" title="عربة التسوق">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="header-cart-badge" id="headerCartCount">0</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="sideDrawerBackdrop" class="side-drawer-backdrop" onclick="closeSideDrawer()"></div>
+  <aside id="sideDrawer" class="side-drawer" aria-label="قائمة الأقسام">
+    <div class="drawer-header">
+      <div class="drawer-brand">
+        <i class="fas fa-leaf"></i>
+        <span>أقسام فايتالي</span>
+      </div>
+      <button class="drawer-close-btn" onclick="closeSideDrawer()" title="إغلاق">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="drawer-user-pill" onclick="closeSideDrawer(); openLoginModal(true);">
+      <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+        <div style="width: 34px; height: 34px; border-radius: 10px; background: rgba(34, 197, 94, 0.14); color: var(--accent-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <i class="fas fa-user-circle" style="font-size: 1.15rem;"></i>
+        </div>
+        <div style="min-width: 0;">
+          <div id="drawerUserName" style="font-size: 0.85rem; font-weight: bold; color: var(--text-color); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">زائر فايتالي</div>
+          <div id="drawerUserSub" style="font-size: 0.71rem; color: var(--text-muted);">اضغط لتسجيل الدخول أو تعديل الحساب</div>
+        </div>
+      </div>
+      <i class="fas fa-chevron-left" style="color: var(--text-muted); font-size: 0.78rem;"></i>
+    </div>
+
+    <div class="drawer-list">
+      <div class="drawer-item" onclick="selectFromDrawer('cat', 'الكل')">
+        <div class="drawer-item-right">
+          <span class="drawer-item-icon"><i class="fas fa-capsules"></i></span>
+          <span>مكملات غذائية</span>
+        </div>
+        <i class="fas fa-chevron-left chevron"></i>
+      </div>
+
+      <div class="drawer-item" onclick="selectFromDrawer('cat', 'الطاقة')">
+        <div class="drawer-item-right">
+          <span class="drawer-item-icon"><i class="fas fa-dumbbell"></i></span>
+          <span>التغذية الرياضية والطاقة</span>
+        </div>
+        <i class="fas fa-chevron-left chevron"></i>
+      </div>
+
+      <div class="drawer-item" onclick="selectFromDrawer('cat', 'الفيتامينات')">
+        <div class="drawer-item-right">
+          <span class="drawer-item-icon"><i class="fas fa-sun"></i></span>
+          <span>الفيتامينات والمعادن</span>
+        </div>
+        <i class="fas fa-chevron-left chevron"></i>
+      </div>
+
+      <div class="drawer-item" onclick="selectFromDrawer('cat', 'الجمال')">
+        <div class="drawer-item-right">
+          <span class="drawer-item-icon"><i class="fas fa-spa"></i></span>
+          <span>الجمال والعناية</span>
+        </div>
+        <i class="fas fa-chevron-left chevron"></i>
+      </div>
+
+      <div class="drawer-item" onclick="selectFromDrawer('cat', 'الجهاز الهضمي')">
+        <div class="drawer-item-right">
+          <span class="drawer-item-icon"><i class="fas fa-apple-alt"></i></span>
+          <span>الجهاز الهضمي والتغذية</span>
+        </div>
+        <i class="fas fa-chevron-left chevron"></i>
+      </div>
+
+      <div class="drawer-item" onclick="selectFromDrawer('cat', 'الصحة العامة')">
+        <div class="drawer-item-right">
+          <span class="drawer-item-icon"><i class="fas fa-heartbeat"></i></span>
+          <span>الصحة العامة والمناعة</span>
+        </div>
+        <i class="fas fa-chevron-left chevron"></i>
+      </div>
+
+      <div class="drawer-item" onclick="selectFromDrawer('keyword', 'للأطفال للرضع للمراهقين')">
+        <div class="drawer-item-right">
+          <span class="drawer-item-icon"><i class="fas fa-baby"></i></span>
+          <span>الرضع والأطفال</span>
+        </div>
+        <i class="fas fa-chevron-left chevron"></i>
+      </div>
+
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">تسوق حسب</div>
+
+      <div class="drawer-item" onclick="closeSideDrawer(); openExploreScreen();">
+        <div class="drawer-item-right">
+          <span class="drawer-item-icon"><i class="fas fa-bullseye"></i></span>
+          <span>أهداف صحية</span>
+        </div>
+        <i class="fas fa-chevron-left chevron"></i>
+      </div>
+
+      <div class="drawer-item" onclick="closeSideDrawer(); openBrandsScreen();">
+        <div class="drawer-item-right">
+          <span class="drawer-item-icon"><i class="fas fa-award"></i></span>
+          <span>العلامات التجارية</span>
+        </div>
+        <i class="fas fa-chevron-left chevron"></i>
+      </div>
+
+      <div class="drawer-item offers-highlight" onclick="closeSideDrawer(); openPromoPage('energy');">
+        <div class="drawer-item-right">
+          <span class="drawer-item-icon"><i class="fas fa-fire"></i></span>
+          <span>عروض</span>
+        </div>
+        <i class="fas fa-chevron-left chevron" style="color:#ef4444;"></i>
+      </div>
+
+      <div class="drawer-item" onclick="closeSideDrawer(); openPromoPage('vitamins');">
+        <div class="drawer-item-right">
+          <span class="drawer-item-icon"><i class="fas fa-star" style="color:#eab308;"></i></span>
+          <span>الأكثر مبيعاً</span>
+        </div>
+        <i class="fas fa-chevron-left chevron"></i>
+      </div>
+    </div>
+  </aside>
+
+  <div class="hero-promo-wrapper" id="heroPromoWrapper">
+    <div class="hero-slides-track" id="heroSlidesTrack">
+      
+      <div class="hero-slide slide-energy" onclick="openPromoPage('energy')">
+        <div class="hero-slide-content">
+          <span class="hero-badge" style="background: #22c55e; color: #052e16;">
+            <i class="fas fa-bolt"></i> عروض حصرية
+          </span>
+          <h3 class="hero-title">مكملات الطاقة والبناء</h3>
+          <p class="hero-desc">خصومات تصل إلى 30% لفترة محدودة على أقوى مكملات الأداء.</p>
+          <span class="hero-cta-pill">
+            <span>تصفح العرض</span>
+            <i class="fas fa-arrow-left" style="font-size: 0.7rem; color: var(--accent-light);"></i>
+          </span>
+        </div>
+        <div class="hero-visual-box">
+          <i class="fas fa-pills" style="font-size: 2rem; color: #22c55e;"></i>
+        </div>
+      </div>
+
+      <div class="hero-slide slide-vitamins" onclick="openPromoPage('vitamins')">
+        <div class="hero-slide-content">
+          <span class="hero-badge" style="background: #3b82f6; color: #fff;">
+            <i class="fas fa-fire"></i> الأكثر طلباً
+          </span>
+          <h3 class="hero-title">فيتامينات الصحة العامة</h3>
+          <p class="hero-desc">دعم يومي متكامل للمناعة والتركيز والحيوية من أشهر الشركات.</p>
+          <span class="hero-cta-pill">
+            <span>تصفح العرض</span>
+            <i class="fas fa-arrow-left" style="font-size: 0.7rem; color: #3b82f6;"></i>
+          </span>
+        </div>
+        <div class="hero-visual-box">
+          <i class="fas fa-capsules" style="font-size: 2rem; color: #3b82f6;"></i>
+        </div>
+      </div>
+
+      <div class="hero-slide slide-protein" onclick="openPromoPage('protein')">
+        <div class="hero-slide-content">
+          <span class="hero-badge" style="background: #eab308; color: #1c1917;">
+            <i class="fas fa-crown"></i> جديد فايتالي
+          </span>
+          <h3 class="hero-title">بروتينات نقية 100%</h3>
+          <p class="hero-desc">ضمان الجودة الأصلية والنتائج السريعة للاستشفاء العضلي.</p>
+          <span class="hero-cta-pill">
+            <span>تصفح العرض</span>
+            <i class="fas fa-arrow-left" style="font-size: 0.7rem; color: #eab308;"></i>
+          </span>
+        </div>
+        <div class="hero-visual-box">
+          <i class="fas fa-dumbbell" style="font-size: 2rem; color: #eab308;"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hero-dots" id="heroDots">
+      <button class="hero-dot active" onclick="goToHeroSlide(0)" aria-label="الشريحة 1"></button>
+      <button class="hero-dot" onclick="goToHeroSlide(1)" aria-label="الشريحة 2"></button>
+      <button class="hero-dot" onclick="goToHeroSlide(2)" aria-label="الشريحة 3"></button>
+    </div>
+  </div>
+
+  <div class="categories-sticky-wrap" id="categoriesStickyWrap">
+    <div class="categories-bar" id="categoriesBar">
+      <div class="cat-item active" onclick="filterCat('الكل', this)"><i class="fas fa-gem"></i> الكل</div>
+      <div class="cat-item" onclick="filterCat('الجهاز الهضمي', this)"><i class="fas fa-bacteria"></i> الجهاز الهضمي</div>
+      <div class="cat-item" onclick="filterCat('الفيتامينات', this)"><i class="fas fa-capsules"></i> الفيتامينات</div>
+      <div class="cat-item" onclick="filterCat('الجمال', this)"><i class="fas fa-sparkles"></i> الجمال</div>
+      <div class="cat-item" onclick="filterCat('الطاقة', this)"><i class="fas fa-bolt"></i> الطاقة</div>
+      <div class="cat-item" onclick="filterCat('الصحة العامة', this)"><i class="fas fa-heartbeat"></i> الصحة العامة</div>
+    </div>
+  </div>
+
+  <div id="catalogStartAnchor" class="catalog-header-bar">
+    <div style="color: var(--accent-light); font-weight: bold; font-size: 0.96rem; display: flex; align-items: center; gap: 6px;">
+      <span>فَايْتَالِي (Vitali)</span>
+      <span id="productsCounter" style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;"></span>
+    </div>
+    <button id="layoutToggleBtn" class="layout-toggle-fancy" onclick="cycleLayout()" title="تغيير طريقة العرض">
+      <i id="layoutIcon" class="fas fa-th-large" style="font-size: 1.05rem;"></i>
+    </button>
+  </div>
+
+  <div class="products-grid" id="productsList"></div>
+
+  <div class="load-more-container" id="loadMoreContainer" style="display: none;">
+    <button class="btn-load-more" id="loadMoreBtn" onclick="loadMoreProducts()">عرض المزيد من المكملات</button>
+  </div>
+
+  <div class="health-hub-section" id="healthHubSection">
+    <div class="health-hub-header">
+      <div class="health-hub-title">
+        <i class="fas fa-heartbeat" style="color: var(--accent-light);"></i>
+        <span>مركز الصحة</span>
+      </div>
+      <button class="health-hub-arrow" onclick="openExploreScreen()" title="عرض الأهداف الصحية">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+    </div>
+    <div class="health-hub-pills">
+      <div class="hub-pill" onclick="selectHealthHub('الصحة العامة', this)">صحة</div>
+      <div class="hub-pill" onclick="selectHealthHub('الطاقة', this)">لياقة بدنية</div>
+      <div class="hub-pill" onclick="selectHealthHub('الجهاز الهضمي', this)">تغذية</div>
+      <div class="hub-pill" onclick="selectHealthHub('الجمال', this)">جمال</div>
+      <div class="hub-pill" onclick="selectHealthHub('الفيتامينات', this)">فيتامينات</div>
+    </div>
+  </div>
+
+  <button id="backToTopBtn" class="back-to-top-btn" onclick="scrollToTopSmooth()">
+    <i class="fas fa-chevron-up" style="color: var(--accent-light);"></i>
+    <span>الأعلى</span>
+  </button>
+
+  <div class="bottom-nav">
+    <div class="nav-item active" onclick="showHome()">
+      <i class="fas fa-home"></i>
+      <span>الرئيسية</span>
+    </div>
+    <a class="nav-item whatsapp-nav" href="https://wa.me/967777502849" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+      <span>الواتساب</span>
+    </a>
+    <div class="nav-item" onclick="openCartScreen()">
+      <div style="position: relative; display: inline-block;">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </div>
+      <span>السلة</span>
+    </div>
+  </div>
+
+  <div class="overlay-screen" id="promoOverlay">
+    <div class="top-bar-detail">
+      <i class="fas fa-arrow-right" style="font-size: 1.2rem; cursor: pointer; padding: 5px;" onclick="closePromoPage()"></i>
+      <span id="promoPageHeaderTitle" style="font-weight: bold; color: var(--accent-light);">عروض فايتالي الخاصة</span>
+      <i class="fas fa-tag" style="font-size: 1.1rem; color: #eab308;"></i>
+    </div>
+    <div id="promoBannerBox" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 14px; margin-bottom: 14px;">
+      <span id="promoBadgeText" style="background: #22c55e; color: #052e16; font-size: 0.72rem; font-weight: bold; padding: 3px 9px; border-radius: 8px;">عرض خاص</span>
+      <h2 id="promoMainTitle" style="font-size: 1.1rem; color: var(--text-color); margin: 8px 0 4px 0;"></h2>
+      <p id="promoMainDesc" style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;"></p>
+    </div>
+    <div class="products-grid" id="promoProductsGrid" style="padding: 0;"></div>
+  </div>
+
+  <div class="overlay-screen" id="exploreOverlay">
+    <div class="top-bar-detail">
+      <i class="fas fa-arrow-right" style="font-size: 1.2rem; cursor: pointer; padding: 5px;" onclick="closeExploreScreen()"></i>
+      <span style="font-weight: bold; color: var(--accent-light);">أهداف صحية واستكشاف</span>
+      <i class="fas fa-bullseye" style="font-size: 1.15rem; color: var(--accent-light);"></i>
+    </div>
+
+    <div class="explore-section-title">
+      <span>التسوق حسب الهدف الصحي</span>
+      <i class="fas fa-arrow-left" style="font-size: 0.85rem; color: var(--text-muted);"></i>
+    </div>
+    <div class="explore-cards-row">
+      <div class="explore-visual-card" onclick="applyExploreFilter('cat', 'الصحة العامة')" style="background: linear-gradient(160deg, #b45309 0%, #451a03 100%);">
+        <i class="fas fa-shield-virus bg-icon" style="color: #fde68a;"></i>
+        <div class="card-label">المناعة</div>
+      </div>
+      <div class="explore-visual-card" onclick="applyExploreFilter('keyword', 'الذاكرة التركيز الدماغ الأعصاب')" style="background: linear-gradient(160deg, #065f46 0%, #022c22 100%);">
+        <i class="fas fa-brain bg-icon" style="color: #a7f3d0;"></i>
+        <div class="card-label">العقل والإدراك</div>
+      </div>
+      <div class="explore-visual-card" onclick="applyExploreFilter('keyword', 'العظام المفاصل كالسيوم مغنيسيوم')" style="background: linear-gradient(160deg, #334155 0%, #0f172a 100%);">
+        <i class="fas fa-bone bg-icon" style="color: #e2e8f0;"></i>
+        <div class="card-label">عظام ومفاصل</div>
+      </div>
+    </div>
+
+    <div class="explore-section-title">
+      <span>استكشف الأنظمة الغذائية المتخصصة</span>
+    </div>
+    <div class="explore-cards-row">
+      <div class="explore-visual-card" onclick="applyExploreFilter('keyword', 'عضوي نقي')" style="background: linear-gradient(160deg, #15803d 0%, #052e16 100%);">
+        <i class="fas fa-seedling bg-icon" style="color: #bbf7d0;"></i>
+        <div class="card-label">عضوي</div>
+      </div>
+      <div class="explore-visual-card" onclick="applyExploreFilter('keyword', 'نباتي نباتية')" style="background: linear-gradient(160deg, #4d7c0f 0%, #1a2e05 100%);">
+        <i class="fas fa-leaf bg-icon" style="color: #d9f99d;"></i>
+        <div class="card-label">نباتي صرف</div>
+      </div>
+      <div class="explore-visual-card" onclick="applyExploreFilter('keyword', 'كيتو كرياتين طاقة')" style="background: linear-gradient(160deg, #0e7490 0%, #083344 100%);">
+        <i class="fas fa-bolt bg-icon" style="color: #a5f3fc;"></i>
+        <div class="card-label">كيتو وطاقة</div>
+      </div>
+    </div>
+
+    <div class="explore-section-title">
+      <span>الفئات المختارة من أجلك</span>
+    </div>
+    <div class="featured-grid-bento">
+      <div class="bento-col-left">
+        <div class="bento-card short" onclick="applyExploreFilter('cat', 'الجهاز الهضمي')">
+          <div>
+            <div class="bento-card-title">صحة الأمعاء</div>
+            <div class="bento-card-sub">بروبيوتيك وإنزيمات</div>
+          </div>
+          <i class="fas fa-bacteria" style="font-size: 1.45rem; color: var(--accent-light); align-self: flex-end;"></i>
+        </div>
+        <div class="bento-card short" onclick="applyExploreFilter('keyword', 'للأطفال للرضع للمراهقين')">
+          <div>
+            <div class="bento-card-title">صحة الأطفال</div>
+            <div class="bento-card-sub">نمو ومناعة آمنة</div>
+          </div>
+          <i class="fas fa-child" style="font-size: 1.45rem; color: #38bdf8; align-self: flex-end;"></i>
+        </div>
+      </div>
+      <div class="bento-card tall" onclick="applyExploreFilter('cat', 'الفيتامينات')">
+        <div>
+          <div class="bento-card-title">فيتامينات</div>
+          <div class="bento-card-sub">تشكيلة متكاملة يومية</div>
+        </div>
+        <img class="bento-card-img" src="https://i.postimg.cc/x16S16ZY/1000019126-Photoroom.png" alt="فيتامينات" loading="lazy">
+      </div>
+    </div>
+
+    <div class="explore-section-title">
+      <span>الأكثر رواجاً اليوم</span>
+    </div>
+    <div class="explore-section-sub">الأكثر نمواً في المبيعات خلال الـ 7 أيام الماضية</div>
+    <div class="trending-row" id="exploreTrendingList"></div>
+  </div>
+
+  <div class="overlay-screen" id="brandsOverlay">
+    <div class="top-bar-detail">
+      <i class="fas fa-arrow-right" style="font-size: 1.2rem; cursor: pointer; padding: 5px;" onclick="closeBrandsScreen()"></i>
+      <span style="font-weight: bold; color: var(--accent-light);">العلامات التجارية العالمية</span>
+      <i class="fas fa-award" style="font-size: 1.15rem; color: var(--accent-light);"></i>
+    </div>
+    <div class="brands-grid" id="brandsGridList"></div>
+  </div>
+
+  <div class="overlay-screen" id="detailOverlay">
+    <div class="top-bar-detail">
+      <i class="fas fa-arrow-right" style="font-size: 1.2rem; cursor: pointer; padding: 5px;" onclick="closeDetail()"></i>
+      <span style="font-weight: bold;">تفاصيل المكمل</span>
+      <i class="far fa-heart" style="font-size: 1.2rem; cursor: pointer;"></i>
+    </div>
+    <div style="text-align: center; margin: 12px 0;">
+      <div id="detImgBox" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 16px; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 12px; min-width: 180px; min-height: 180px;">
+        <img id="detImg" src="" style="max-width: 200px; max-height: 200px; object-fit: contain; border-radius: 8px;">
+      </div>
+      <div id="detBrand" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px;"></div>
+      <h2 id="detTitle" style="font-size: 1.08rem; margin-bottom: 8px; color: var(--text-color);"></h2>
+      <div id="detPrice" style="font-size: 1.18rem; color: var(--accent-light); font-weight: bold; margin-bottom: 14px;"></div>
+      <div style="background: var(--card-bg); padding: 12px 14px; border-radius: 14px; text-align: right; border: 1px solid var(--border-color); margin-bottom: 12px;">
+        <div style="color: var(--accent-light); font-weight: bold; margin-bottom: 5px; font-size: 0.88rem;">حالة المكمل:</div>
+        <div style="font-size: 0.86rem;">✅ متوفر في المخزون</div>
+      </div>
+      <div style="background: var(--card-bg); padding: 12px 14px; border-radius: 14px; text-align: right; border: 1px solid var(--border-color); margin-bottom: 18px;">
+        <div style="color: var(--accent-light); font-weight: bold; margin-bottom: 6px; font-size: 0.88rem;">مميزات المكمل:</div>
+        <ul id="detFeatures" style="padding-right: 18px; font-size: 0.88rem; color: var(--text-muted); line-height: 1.65;"></ul>
+      </div>
+      <button class="btn-add-cart" onclick="addToCartFromDetail()" style="padding: 12px; font-size: 0.9rem;">
+        <i class="fas fa-cart-plus"></i> إضافة إلى عربة التسوق
+      </button>
+    </div>
+  </div>
+
+  <div class="overlay-screen" id="cartOverlay">
+    <div class="top-bar-detail">
+      <i class="fas fa-arrow-right" style="font-size: 1.2rem; cursor: pointer; padding: 5px;" onclick="closeCartScreen()"></i>
+      <div style="display: flex; align-items: center; gap: 7px;">
+        <i class="fas fa-shopping-bag" style="color: var(--accent-light);"></i>
+        <span style="font-weight: bold; font-size: 0.98rem;">سلة التسوق</span>
+      </div>
+      <i class="fas fa-trash-alt" style="font-size: 1.05rem; cursor: pointer; color: #ef4444; padding: 5px;" onclick="clearCart()" title="إفراغ السلة"></i>
+    </div>
+    <div id="cartItemsList" style="flex: 1; overflow-y: auto; padding-bottom: 8px;"></div>
+    <div class="cart-summary-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 0.84rem; color: var(--text-muted);">
+        <span>عدد المنتجات المختارة:</span>
+        <span id="cartItemsCountLabel" style="font-weight: bold; color: var(--text-color);">0</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; padding-top: 8px; border-top: 1px solid var(--border-color); font-weight: bold; font-size: 0.98rem;">
+        <span>الإجمالي المستحق:</span>
+        <span id="cartTotalPrice" style="color: var(--accent-light); font-size: 1.05rem;">0 ر.س</span>
+      </div>
+      <button class="btn-add-cart" onclick="checkoutToWhatsApp()" style="background: linear-gradient(135deg, #22c55e, #16a34a); padding: 12px; font-size: 0.9rem; border-radius: 13px;">
+        <i class="fab fa-whatsapp" style="font-size: 1.05rem;"></i> إتمام الطلب عبر الواتساب
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const products = [
+      { id: 1, brand: "أورورا نوتراساينس", name: "Micro-Pack+®، فيتامين ج الشحمي، 10 أكياس، 0.24 أونصة سائلة (7 مل) لكل كيس", price: 47.59, category: "الفيتامينات", img: "https://i.postimg.cc/wTB22x5s/1000021935-cutout.png", features: ["فيتامين ج الشحمي لدعم المناعة بامتصاص متطور", "10 أكياس سائلة فردية لسهولة الاستخدام"] },
+      { id: 2, brand: "أورورا نوتراساينس", name: "Mega-Pack + فيتامين ج الشحمي، 3,000 ملجم، 32 كيسًا، 0.68 أونصة سائلة (20 مل) لكل كيس", price: 153.93, category: "الفيتامينات", img: "https://i.postimg.cc/G3XJ4w00/1000021955-cutout.png", features: ["جرعة عالية الفعالية 3,000 ملجم من فيتامين ج الشحمي", "32 أكياس سائلة فردية لتعزيز حماية الخلايا والمناعة"] },
+      { id: 3, brand: "سبورتس ريسورش", name: "د 3 + ك 2، نباتي، 62.5 مكجم / 100 مكجم، 60 كبسولة هلامية نباتية", price: 84.58, category: "الفيتامينات", img: "https://i.postimg.cc/256dr06d/1000021973-cutout.png", features: ["تركيبة نباتية متكاملة لصحة العظام والمناعة", "يحتوي على زيت جوز الهند المكتبي لامتصاص فائق"] },
+      { id: 4, brand: "لايف إكستانشن", name: "تقوية العظام بفيتامين ك 2، 120 كبسولة", price: 57.26, category: "الفيتامينات", img: "https://i.postimg.cc/nzgNL7k3/1000022324-cutout.png", features: ["يدعم صحة وقوة العظام والأسنان بفعالية عالية", "120 كبسولة لدعم الكثافة العظمية بانتظام"] },
+      { id: 5, brand: "كاليفورنيا غولد نيوتريشن", name: "فطر لبدة الأسد العضوي، 90 كبسولة نباتية", price: 42.52, category: "الصحة العامة", img: "https://i.postimg.cc/zvk0ktc1/1000021931-cutout.png", features: ["فطر لبدة الأسد العضوي لدعم الوظائف الإدراكية والذاكرة", "90 كبسولة نباتية بتركيز عالي ونقاء مضمون"] },
+      { id: 6, brand: "فورس فاكتور", name: "مجموعة المكملات الغذائية الأساسية، الماكا السوداء، 60 كبسولة", price: 44.90, category: "الطاقة", img: "https://i.postimg.cc/90srHbXY/1000019613-Photoroom.png", features: ["ماكا سوداء لتعزيز الطاقة والحيوية والأداء البدني", "60 كبسولة بتركيز عالي لزيادة القدرة على التحمل"] },
+      { id: 7, brand: "جارو فورميلادز", name: "Fem Dophilus® نباتي، 1 مليار وحدة تشكيل مستعمرة، 30 كبسولة نباتية", price: 75.34, category: "الجهاز الهضمي", img: "https://i.postimg.cc/05pVtHJw/1000022051-cutout.png", features: ["بروبيوتيك مخصص لدعم صحة المرأة والمسالك البولية", "30 كبسولة نباتية بسلالات فعالة ومدروسة سريرياً"] },
+      { id: 8, brand: "سوانسون فيتامينز", name: "السلفوريفين من خلاصة براعم البروكلي، 400 مكجم، 60 كبسولة نباتية صرف", price: 23.66, category: "الصحة العامة", img: "https://i.postimg.cc/2SHcQbBS/1000022043-cutout.png", features: ["خلاصة براعم البروكلي الغنية بمضادات الأكسدة القوية", "تدعم عمليات إزالة السموم وحماية الخلايا الطبيعية"] },
+      { id: 9, brand: "كاليفورنيا غولد نيوتريشن", name: "SimplyOne®، فيتامين د 3، 1,250 مكجم (50,000 وحدة دولية)، 50 كبسولة هلامية", price: 17.92, category: "الفيتامينات", img: "https://i.postimg.cc/MGQT7Brn/1000022013-cutout.png", features: ["فيتامين د3 بتركيز عالٍ جداً لدعم المناعة والعظام", "50 كبسولة هلامية عالية الفعالية والنقاء"] },
+      { id: 10, brand: "نورديك ناتورالز", name: "Daily Omega Kids™، للأعمار 3 سنوات فأكثر، فاكهة طبيعية، 30 كبسولة هلامية", price: 33.45, category: "الصحة العامة", img: "https://i.postimg.cc/pXcX3CwF/1000022023-cutout.png", features: ["أوميغا 3 مخصص للأطفال لدعم الدماغ والوظائف البصرية", "30 كبسولة هلامية بنكهة الفاكهة الطبيعية المحبوبة للصغار"] },
+      { id: 11, brand: "بروهيليت لونغيفيتي", name: "NMN Pro 1000، 60 ملجم، 500 كبسولة (500 ملجم لكل كبسولة)", price: 190.32, category: "الطاقة", img: "https://i.postimg.cc/tCNmgmqn/1000022029-cutout.png", features: ["مكمل NMN متطور لدعم طاقة الخلايا وحيوية الجسم", "كبسولات عالية النقاء لتعزيز الشباب والنشاط الخلوي"] },
+      { id: 12, brand: "بروهيليت لونغيفيتي", name: "NMN Pro™ 300، 300 ملجم، 30 كبسولة", price: 79.67, category: "الطاقة", img: "https://i.postimg.cc/dtjGCbZ9/1000021984-cutout.png", features: ["مستويات متقدمة لدعم NAD+ والطاقة الخلوية", "30 كبسولة بتركيز 300 ملجم لكل كبسولة"] },
+      { id: 13, brand: "يوثيري", name: "كولاجين، 6000 ملجم، 160 قرصًا (1000 ملجم لكل قرص)", price: 46.55, category: "الجمال", img: "https://i.postimg.cc/vZhjVCh5/1000022330-cutout.png", features: ["كولاجين متطور مع فيتامين ج لدعم نضارة البشرة وشبابها", "يقوي الشعر والأظافر والمفاصل بفعالية عالية"] },
+      { id: 14, brand: "كاليفورنيا غولد نيوتريشن", name: "Superfoods، بذور شيا العضوية، بذور سوداء كاملة، 12 أونصة (340 غرام)", price: 25.62, category: "الجهاز الهضمي", img: "https://i.postimg.cc/vHFvf7qQ/1000021971-cutout.png", features: ["بذور شيا عضوية غنية بالألياف والأوميغا 3 الطبيعية", "تدعم صحة الهضم والنشاط اليومي المستدام"] },
+      { id: 15, brand: "نافيتاس أورغانيكس", name: "مسحوق الكاكاو العضوي، 8 أوقية (227 جم)", price: 46.30, category: "الصحة العامة", img: "https://i.postimg.cc/cHGJXJVF/1000022015-cutout.png", features: ["مسحوق كاكاو عضوي نقي غني بمضادات الأكسدة", "يدعم المزاج والطاقة وصحة القلب بشكل طبيعي"] },
+      { id: 16, brand: "يوثيري", name: "كولاجين، 290 قرصًا", price: 73.24, category: "الجمال", img: "https://i.postimg.cc/2Stmcy6v/1000019619-Photoroom.png", features: ["عبوة اقتصادية كبيرة 290 قرصاً من الكولاجين النقي", "يدعم مرونة البشرة وصحة الشعر والمفاصل"] },
+      { id: 17, brand: "ناترول", name: "أقراص ميلاتونين للمضغ للأطفال، من عمر 4 سنوات فأكبر، بنكهة توت العليق، 60 قرصًا للمضغ", price: 44.34, category: "الصحة العامة", img: "https://i.postimg.cc/cCkQ2Y7k/1000021951-cutout.png", features: ["ميلاتونين آمن ومخصص للأطفال لمساعدة على النوم الهادئ", "60 قرصاً للمضغ بنكهة توت العليق الطبيعية"] },
+      { id: 18, brand: "لايف إكستانشن", name: "كبسولات الزنك، عالية الفعالية، 50 ملجم، 90 كبسولة نباتية", price: 24.63, category: "الصحة العامة", img: "https://i.postimg.cc/x16S16ZY/1000019126-Photoroom.png", features: ["زنك عالي الفعالية لدعم الجهاز المناعي ووظائف الخلايا", "90 كبسولة نباتية سهلة الامتصاص"] },
+      { id: 19, brand: "سوانسون فيتامينز", name: "فيتامينات (د 3) و (ك 2)، 60 كبسولة نباتية", price: 30.85, category: "الفيتامينات", img: "https://i.postimg.cc/xdCDNHq9/1000021914-cutout.png", features: ["تركيبة مزدوجة لصحة العظام والقلب والمناعة", "60 كبسولة نباتية خالية من المكونات المعدلة"] },
+      { id: 20, brand: "ناترول", name: "أقراص ميلاتونين للمضغ للأطفال، للأطفال من عمر 4 سنوات فأكبر، بنكهة توت العليق، 90 قرصًا للمضغ", price: 55.97, category: "الصحة العامة", img: "https://i.postimg.cc/VvZjpM95/1000021939-cutout.png", features: ["عبوة أكبر 90 قرصاً ميلاتونين للمضغ للأطفال", "تدعم النوم الصحي والمريح بنكهة توت العليق"] },
+      { id: 21, brand: "ناو فودز", name: "Daily Vits™، متعدد الفيتامينات والمعادن، 120 كبسولة نباتية", price: 55.11, category: "الفيتامينات", img: "https://i.postimg.cc/C5C28w81/1000022265-cutout.png", features: ["متعدد فيتامينات ومعادن متكامل لدعم الحيوية اليومية", "120 كبسولة نباتية مدعمة بمستخلصات الخضار والفواكه"] },
+      { id: 22, brand: "ناو فودز", name: "Daily Vits™، 30 كبسولة نباتية", price: 21.12, category: "الفيتامينات", img: "https://i.postimg.cc/kXmpqdm9/1000022031-cutout.png", features: ["فيتامينات متعددة ومعادن للاستخدام اليومي الخفيف", "30 كبسولة نباتية عملية وسريعة"] },
+      { id: 23, brand: "ناو فودز", name: "حبيبات كاكاو عضوي خام، 8 أونصات (227 جم)", price: 45.68, category: "الصحة العامة", img: "https://i.postimg.cc/13zM3m77/1000022063-cutout.png", features: ["حبيبات كاكاو عضوي خام غير محمصة وغنية بالفلافونويد", "مثالية لنظام الكيتو والتغذية السليمة"] },
+      { id: 24, brand: "ناو فودز", name: "Real Food، مسحوق الكاكاو الخام العضوي، 12 أونصة (340 جم)", price: 52.59, category: "الصحة العامة", img: "https://i.postimg.cc/KcfQt3Th/1000021937-cutout.png", features: ["مسحوق كاكاو خام عضوي نقي 100%", "غني بمضادات الأكسدة ومثالي للتحلية الصحية والمشروبات"] },
+      { id: 25, brand: "كاليفورنيا غولد نيوتريشن", name: "مسحوق Gold C®، فيتامين ج بدرجة دستور الأدوية الأمريكي، 1,000 ملجم، 8.81 أونصات (250 جم)", price: 29.18, category: "الفيتامينات", img: "https://i.postimg.cc/jd5JT79V/1000022590-cutout.png", features: ["فيتامين ج نقي بمسحوق فائق الجودة", "يدعم المناعة ومضادات الأكسدة بجرعات مرنة"] },
+      { id: 26, brand: "كاليفورنيا غولد نيوتريشن", name: "بتيدات الكولاجين المتحلل، النوع الأول والثالث، 250 قرصًا", price: 80.39, category: "الجمال", img: "https://i.postimg.cc/c4QXkbJy/1000019605-Photoroom.png", features: ["أقراص كولاجين متحلل نوع 1 و 3 لنضارة البشرة والشعر", "250 قرصاً لتعزيز صحة المفاصل والأنسجة الضامة"] },
+      { id: 27, brand: "إم أر إم نيوتريشن", name: "أوراق المورينجا، 60 كبسولة نباتية صرف (600 ملجم لكل كبسولة)", price: 29.23, category: "الصحة العامة", img: "https://i.postimg.cc/nrxYThV3/1000022464-cutout.png", features: ["مستخلص أوراق المورينجا النقي الغني بالفيتامينات والمعادن", "60 كبسولة نباتية لدعم الحيوية العامة ومضادات الأكسدة"] },
+      { id: 28, brand: "كاليفورنيا غولد نيوتريشن", name: "تركيبة دعم المفاصل النباتية الكاملة مع الجلوكوزامين، والكوندرويتين، والميثيل سلفونيل ميثان (MSM)، وحمض الهيالورونيك، 90 كبسولة نباتية", price: 67.46, category: "الصحة العامة", img: "https://i.postimg.cc/J0jY4F0g/1000022449-cutout.png", features: ["تركيبة نباتية متكاملة لصحة ومرونة المفاصل", "تحتوي على الجلوكوزامين، الكوندرويتين، MSM، وحمض الهيالورونيك"] },
+      { id: 29, brand: "كاليفورنيا غولد نيوتريشن", name: "لوتين معزز بالزيكسانثين من خلاصة القطيفة، 60 كبسولة هلامية نباتية", price: 28.09, category: "الصحة العامة", img: "https://i.postimg.cc/q7gmCqgj/1000022453-cutout.png", features: ["لوتين مع زياكسانثين لحماية وصحة العين والرؤية", "60 كبسولة هلامية نباتية تحمي من إجهاد الضوء الأزرق"] },
+      { id: 30, brand: "إم أر إم نيوتريشن", name: "سلالة كوردسيبس 60، CS-4 كبسولة نباتية (750 ملجم لكل كبسولة)", price: 46.78, category: "الطاقة", img: "https://i.postimg.cc/xC3bfyYs/1000022581-cutout.png", features: ["فطر كوردسيبس CS-4 لدعم الطاقة والأداء الرياضي", "60 كبسولة لزيادة التحمل والحيوية البدنية"] },
+      { id: 31, brand: "كاليفورنيا غولد نيوتريشن", name: "عناصر دعم المناعة الـ 4، يحتوي على فيتاميني (ج) و(د) والزنك والسيلينيوم، 60 كبسولة نباتية", price: 23.56, category: "الصحة العامة", img: "https://i.postimg.cc/dttG0XhX/1000022575-cutout.png", features: ["أربعة عناصر أساسية قوية لتعزيز الجهاز المناعي", "60 كبسولة نباتية لدعم الدفاعات الطبيعية للجسم"] },
+      { id: 32, brand: "كاليفورنيا غولد نيوتريشن", name: "عناصر دعم المناعة الـ 4، يحتوي على فيتامين (ج)، وفيتامين (د)، والزنك، والسيلينيوم، 180 كبسولة نباتية", price: 44.34, category: "الصحة العامة", img: "https://i.postimg.cc/cLP3XLXY/1000022579-cutout.png", features: ["عبوة اقتصادية 180 كبسولة من عناصر دعم المناعة الـ 4", "تركيبة متكاملة بفيتامين سي، د، الزنك والسيلينيوم"] },
+      { id: 33, brand: "كونول", name: "يوبيكوينول مساعد الإنزيم Q10 الفائق، 100 ملجم، 100 كبسولة هلامية", price: 142.66, category: "الطاقة", img: "https://i.postimg.cc/MTqvFMRQ/1000022596-cutout.png", features: ["يوبيكوينول نقي (الشكل النشط لـ CoQ10) لصحة القلب والطاقة", "100 كبسولة هلامية قابلة للذوبان لامتصاص فائق"] },
+      { id: 34, brand: "كاليفورنيا غولد نيوتريشن", name: "عناصر دعم المناعة الـ 4، يحتوي على فيتامين (ج) والد والزنك والسيلينيوم، 60 كبسولة نباتية", price: 23.56, category: "الصحة العامة", img: "https://i.postimg.cc/15CwVH61/1000022573-cutout.png", features: ["دعم مناعي شامل بأربعة عناصر رئيسية", "60 كبسولة نباتية لدعم صحة الجسم طوال العام"] },
+      { id: 35, brand: "سوانسون فيتامينز", name: "ميلاتونين، 3 ملجم، 60 كبسولة نباتية", price: 7.94, category: "الصحة العامة", img: "https://i.postimg.cc/wT0ccHKg/1000022559-cutout.png", features: ["ميلاتونين نقي لدعم دورة النوم والراحة الليلية", "60 كبسولة نباتية بتركيز 3 ملجم"] },
+      { id: 36, brand: "كونول", name: "الإنزيم المساعد Q10 يوبيكوينول، 100 ملجم، 60 كبسولة هلامية", price: 85.95, category: "الطاقة", img: "https://i.postimg.cc/mkNVttGV/1000022047-cutout.png", features: ["يوبيكوينول CoQ10 النشط لدعم طاقة الخلايا والقلب", "60 كبسولة هلامية بامتصاص فعال"] },
+      { id: 37, brand: "سوانسون فيتامينز", name: "ستيرول نباتي، القوة القصوى، 60 كبسولة هلامية", price: 17.36, category: "الصحة العامة", img: "https://i.postimg.cc/28wTchZT/1000022457-cutout.png", features: ["ستيرولات نباتية لدعم صحة القلب والأوعية الدموية", "60 كبسولة هلامية عالية الفعالية"] },
+      { id: 38, brand: "سوانسون فيتامينز", name: "البربرين المتطور، 30 كبسولة نباتية صرف (550 مليجرام لكل كبسولة)", price: 63.32, category: "الصحة العامة", img: "https://i.postimg.cc/DfQc0L5R/1000022470-cutout.png", features: ["بربرين متطور بامتصاص معزز لدعم الأيض والتمثيل الغذائي", "30 كبسولة نباتية صرف بتركيز 550 ملجم"] },
+      { id: 39, brand: "ناو فودز", name: "بكتين التفاح، 120 كبسولة نباتية (0.7 جم لكل كبسولة)", price: 47.68, category: "الجهاز الهضمي", img: "https://i.postimg.cc/gcyKj8NL/1000022553-cutout.png", features: ["ألياف بكتين التفاح لدعم صحة الجهاز الهضمي والأمعاء", "120 كبسولة نباتية تدعم صحة الأيض والكولسترول"] },
+      { id: 40, brand: "سوانسون فيتامينز", name: "Full Spectrum®، الشويكة اللبنية، 500 ملجم، 100 كبسولة نباتية صرف", price: 19.20, category: "الصحة العامة", img: "https://i.postimg.cc/zDkNm0vB/1000019618-Photoroom.png", features: ["مستخلص الشويكة اللبنية الكامل (Milk Thistle) لصحة الكبد", "100 كبسولة نباتية تدعم إزالة السموم وحماية الخلايا الكبدية"] },
+      { id: 41, brand: "ناتشرز أنسر", name: "الجوز الأسود ونبات الشيح، مستخلص سائل، خالٍ من الكحول، 2,000 ملجم، 1 أونصة سائلة (30 مل)", price: 39.28, category: "الصحة العامة", img: "https://i.postimg.cc/7h1XyTQz/1000022455-cutout.png", features: ["مستخلص أعشاب الجوز الأسود والشيح لدعم الصحة العامة", "سائل خالٍ من الكحول بتركيز 2,000 ملجم في عبوة 30 مل"] },
+      { id: 42, brand: "سوانسون فيتامينز", name: "زيت بذور اليقطين، 1,000 ملجم، 100 كبسولة هلامية", price: 40.57, category: "الصحة العامة", img: "https://i.postimg.cc/MpfMM8qc/1000022588-cutout.png", features: ["زيت بذور اليقطين النقي لدعم صحة البروستاتا والقلب والدماغ", "100 كبسولة هلامية سهلة البلع"] },
+      { id: 43, brand: "دكتورز بيست", name: "حمض ألفا ليبويك 600، 600 ملجم، 60 كبسولة نباتية", price: 52.10, category: "الصحة العامة", img: "https://i.postimg.cc/NMmk1Hty/1000022461-cutout.png", features: ["مضاد أكسدة قوي حمض ألفا ليبويك لدعم الأيض الخلوي", "60 كبسولة نباتية بتركيز 600 ملجم"] },
+      { id: 44, brand: "سبورتس ريسورش", name: "أستازانتين، بالقوة الثلاثية، 12 ملجم، 60 كبسولة هلامية", price: 103.06, category: "الصحة العامة", img: "https://i.postimg.cc/VvF9hPdj/1000022468-cutout.png", features: ["أستازانتين ثلاثي القوة كمضاد أكسدة استثنائي للجسم", "60 كبسولة هلامية تدعم صحة البشرة والمفاصل والخلايا"] },
+      { id: 45, brand: "سوانسون فيتامينز", name: "كركم وفلفل أسود، 60 كبسولة نباتية صرف", price: 23.58, category: "الصحة العامة", img: "https://i.postimg.cc/T1CYdJp6/1000022017-cutout.png", features: ["خلاصة الكركم المدعمة بالفلفل الأسود لامتصاص فائق", "60 كبسولة نباتية تدعم صحة المفاصل والاستجابة الالتهابية الصحية"] },
+      { id: 46, brand: "ليمي", name: "Debloat، علكات بروبيوتيك للهضم يوميًا، 60 علكة", price: 99.94, category: "الجهاز الهضمي", img: "https://i.postimg.cc/QNqphsdr/1000022571-cutout.png", features: ["علكات بروبيوتيك يومية لدعم راحة الجهاز الهضمي والانتفاخ", "60 علكة بلسمية ولذيذة بنكهة مميزة"] },
+      { id: 47, brand: "ناو فودز", name: "زيت الأوريجانو، 90 كبسولة هلامية", price: 42.06, category: "الجهاز الهضمي", img: "https://i.postimg.cc/fyMmmqBn/1000022569-cutout.png", features: ["زيت الأوريجانو بتركيز مغلف معوي لتعزيز صحة الأمعاء", "90 كبسولة هلامية تدعم المناعة والجهاز الهضمي"] },
+      { id: 48, brand: "ناو فودز", name: "مستخلص البلميط المنشاري مع زيت بذور اليقطين والزنك، 160 ملجم، 90 كبسولة هلامية", price: 43.48, category: "الصحة العامة", img: "https://i.postimg.cc/0j1BnJ56/1000021923-cutout.png", features: ["مستخلص البلميط المنشاري المدعم بزيت اليقطين والزنك لصحة الرجال", "90 كبسولة هلامية تدعم وظائف البروستاتا الصحية"] },
+      { id: 49, brand: "ناتشرز واي", name: "Chlorofresh®، كلوروفيل سائل، بدون نكهات، 16 أونصة سائلة (480 مل)", price: 51.54, category: "الصحة العامة", img: "https://i.postimg.cc/dtw4gm2J/1000022055-cutout.png", features: ["كلوروفيل سائل نقي لتنقية الجسم ودعم صحة البشرة", "عبوة اقتصادية 480 مل بدون نكهات"] },
+      { id: 50, brand: "بوبز ريد ميل", name: "رقائق خميرة غذائية كبيرة، خالي من الجلوتون، 5 أوقية (142 جم)", price: 36.98, category: "الصحة العامة", img: "https://i.postimg.cc/pd4sSwZ0/1000022045-cutout.png", features: ["خميرة غذائية كبيرة الحجم غنية بفيتامينات ب والخالية من الجلوتين", "تضيف نكهة جبنية لذيذة وقيمة غذائية عالية للوجبات"] },
+      { id: 51, brand: "سمارتي بانتس", name: "علكات الأطفال العضوية، فيتامينات متعددة وأوميغا، توت مشكل وكرز، 120 علكة", price: 82.67, category: "الفيتامينات", img: "https://i.postimg.cc/pXcX3CwF/1000022023-cutout.png", features: ["فيتامينات متعددة عضوية وأوميغا 3 لدعم نمو ومناعة الأطفال", "120 علكة لذيذة بنكهة التوت المشكل والكرز"] },
+      { id: 52, brand: "سوانسون فيتامينز", name: "ميلاتونين، 5 مليجرام، 60 كبسولة نباتية صرف", price: 16.58, category: "الصحة العامة", img: "https://i.postimg.cc/wT0ccHKg/1000022559-cutout.png", features: ["ميلاتونين عالي القوة لدعم النوم العميق والراحة الليلية", "60 كبسولة نباتية صرف بتركيز 5 ملجم لكل كبسولة"] }
+    ];
+
+    let cart = [];
+    let currentCategory = 'الكل';
+    let selectedProd = null;
+
+    function applyThemeMode(mode) {
+      const isLight = mode === 'light';
+      document.body.classList.toggle('light-theme', isLight);
+      const icon = document.getElementById('themeIcon');
+      if (icon) {
+        icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+      }
+      try {
+        localStorage.setItem('vitali_theme_mode', isLight ? 'light' : 'dark');
+      } catch (e) {}
+    }
+
+    function toggleThemeMode() {
+      const nextMode = document.body.classList.contains('light-theme') ? 'dark' : 'light';
+      applyThemeMode(nextMode);
+      showToast(nextMode === 'light' ? 'تم التفعيل: الوضع العادي' : 'تم التفعيل: الوضع الليلي');
+    }
+
+    (function initSavedTheme() {
+      let savedTheme = 'dark';
+      try {
+        savedTheme = localStorage.getItem('vitali_theme_mode') || 'dark';
+      } catch (e) {}
+      applyThemeMode(savedTheme);
+    })();
+
+    function updateUserDrawerUI() {
+      const nameEl = document.getElementById('drawerUserName');
+      const subEl = document.getElementById('drawerUserSub');
+      let userData = null;
+      try {
+        userData = JSON.parse(localStorage.getItem('vitali_user_session') || 'null');
+      } catch (e) {}
+
+      if (userData && userData.name) {
+        if (nameEl) nameEl.innerText = userData.name;
+        if (subEl) subEl.innerText = userData.phone ? `الجوال: ${userData.phone}` : 'حساب نشط • اضغط للتعديل';
+      } else {
+        if (nameEl) nameEl.innerText = 'زائر فايتالي';
+        if (subEl) subEl.innerText = 'اضغط لتسجيل الدخول أو المتابعة كضيف';
+      }
+    }
+
+    function openLoginModal(forceOpen = false) {
+      const backdrop = document.getElementById('loginModalBackdrop');
+      if (!backdrop) return;
+      try {
+        const existing = JSON.parse(localStorage.getItem('vitali_user_session') || 'null');
+        if (existing) {
+          const nInput = document.getElementById('loginNameInput');
+          const pInput = document.getElementById('loginPhoneInput');
+          if (nInput && existing.name) nInput.value = existing.name;
+          if (pInput && existing.phone) pInput.value = existing.phone;
+        }
+      } catch (e) {}
+      if (forceOpen || true) {
+        backdrop.classList.add('open');
+      }
+    }
+
+    function closeLoginModal() {
+      const backdrop = document.getElementById('loginModalBackdrop');
+      if (backdrop) backdrop.classList.remove('open');
+    }
+
+    function skipLoginModal() {
+      try {
+        sessionStorage.setItem('vitali_login_dismissed', '1');
+      } catch (e) {}
+      closeLoginModal();
+      showToast('مرحباً بك في متجر فايتالي');
+    }
+
+    function submitQuickLogin(event) {
+      event.preventDefault();
+      const nameVal = (document.getElementById('loginNameInput')?.value || '').trim();
+      const phoneVal = (document.getElementById('loginPhoneInput')?.value || '').trim();
+      const finalName = nameVal || 'عميل فايتالي';
+      const sessionObj = { name: finalName, phone: phoneVal };
+
+      try {
+        localStorage.setItem('vitali_user_session', JSON.stringify(sessionObj));
+        sessionStorage.setItem('vitali_login_dismissed', '1');
+      } catch (e) {}
+
+      updateUserDrawerUI();
+      closeLoginModal();
+      showToast(`أهلاً بك يا ${finalName}!`);
+    }
+
+    let currentHeroSlide = 0;
+    const totalHeroSlides = 3;
+    let heroAutoTimer = null;
+
+    function goToHeroSlide(index) {
+      currentHeroSlide = (index + totalHeroSlides) % totalHeroSlides;
+      const track = document.getElementById('heroSlidesTrack');
+      const dots = document.querySelectorAll('.hero-dot');
+      if (track) {
+        track.style.transform = `translate3d(${currentHeroSlide * 33.3333}%, 0, 0)`;
+      }
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentHeroSlide);
+      });
+      resetHeroAutoTimer();
+    }
+
+    function resetHeroAutoTimer() {
+      if (heroAutoTimer) clearInterval(heroAutoTimer);
+      heroAutoTimer = setInterval(() => {
+        goToHeroSlide(currentHeroSlide + 1);
+      }, 4500);
+    }
+
+    (function initHeroTouchSwipe() {
+      const wrapper = document.getElementById('heroPromoWrapper');
+      if (!wrapper) return;
+      let startX = 0;
+      wrapper.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+      wrapper.addEventListener('touchend', (e) => {
+        const diff = e.changedTouches[0].clientX - startX;
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) {
+            goToHeroSlide(currentHeroSlide + 1);
+          } else {
+            goToHeroSlide(currentHeroSlide - 1);
+          }
+        }
+      }, { passive: true });
+      resetHeroAutoTimer();
+    })();
+
+    function openSideDrawer() {
+      updateUserDrawerUI();
+      document.getElementById('sideDrawerBackdrop').classList.add('open');
+      document.getElementById('sideDrawer').classList.add('open');
+    }
+
+    function closeSideDrawer() {
+      document.getElementById('sideDrawerBackdrop').classList.remove('open');
+      document.getElementById('sideDrawer').classList.remove('open');
+    }
+
+    function selectFromDrawer(type, value) {
+      closeSideDrawer();
+      applyExploreFilter(type, value);
+    }
+
+    const productsMap = new Map();
+    const validProductsCache = [];
+    const categoryCache = {
+      'الكل': [],
+      'الجهاز الهضمي': [],
+      'الفيتامينات': [],
+      'الجمال': [],
+      'الطاقة': [],
+      'الصحة العامة': []
+    };
+
+    for (let i = 0; i < products.length; i++) {
+      const p = products[i];
+      if (p && p.name && p.name.trim() !== '') {
+        const cat = p.category ? p.category.trim() : '';
+        const featsText = Array.isArray(p.features) ? p.features.join(' ') : '';
+        p._searchStr = `${p.name} ${p.brand || ''} ${cat} ${featsText}`.toLowerCase();
+        productsMap.set(p.id, p);
+        validProductsCache.push(p);
+        categoryCache['الكل'].push(p);
+        if (categoryCache[cat]) {
+          categoryCache[cat].push(p);
+        }
+      }
+    }
+
+    const BATCH_SIZE = 40;
+    let currentFilteredList = validProductsCache;
+    let renderedCount = 0;
+    let toastTimer = null;
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastBox');
+      toast.innerText = msg;
+      toast.classList.add('show');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2200);
+    }
+
+    function createProductCardHTML(p) {
+      const imgTag = p.img && p.img.trim() !== ''
+        ? `<img src="${p.img}" alt="${p.name}" loading="lazy" decoding="async" onerror="this.onerror=null; this.parentElement.innerHTML='<div style='color:#94a3b8; font-size:0.75rem; text-align:center;'><i class='fas fa-capsules' style='font-size:1.5rem; margin-bottom:4px; color:#22c55e;'></i><br>صورة المكمل</div>';">`
+        : `<div style="color:#94a3b8; font-size:0.75rem; text-align:center;"><i class="fas fa-capsules" style="font-size:1.5rem; margin-bottom:4px; color:#22c55e;"></i><br>صورة المكمل</div>`;
+
+      return `
+        <div class="product-card">
+          <div>
+            <div class="prod-brand">${p.brand || 'فايتالي'}</div>
+            <div class="prod-title" onclick="openDetail(${p.id})">${p.name}</div>
+          </div>
+
+          <div>
+            <div class="prod-img-box" onclick="openDetail(${p.id})">
+              <div class="img-actions" onclick="event.stopPropagation()">
+                <i class="far fa-heart action-icon" onclick="this.classList.toggle('fas'); this.classList.toggle('far'); this.style.color = this.classList.contains('fas') ? '#ef4444' : '#fff';"></i>
+                <i class="fas fa-share-alt action-icon" onclick="shareProduct(${p.id})" title="مشاركة المكمل"></i>
+              </div>
+              ${imgTag}
+            </div>
+
+            <div class="prod-price">${Number(p.price).toLocaleString()} ر.س</div>
+            <button class="btn-add-cart" onclick="addToCart(${p.id})">
+              <i class="fas fa-cart-plus"></i> إضافة للسلة
+            </button>
+            <div class="more-options" onclick="openDetail(${p.id})">+ التفاصيل والمميزات</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function updateLoadMoreButton() {
+      const loadMoreContainer = document.getElementById('loadMoreContainer');
+      const loadMoreBtn = document.getElementById('loadMoreBtn');
+      const remaining = currentFilteredList.length - renderedCount;
+      if (remaining > 0) {
+        loadMoreContainer.style.display = 'block';
+        loadMoreBtn.innerText = `عرض المزيد (متبقي ${remaining} مكمل)`;
+      } else {
+        loadMoreContainer.style.display = 'none';
+      }
+    }
+
+    function renderProducts(listToRender = validProductsCache) {
+      const container = document.getElementById('productsList');
+      const counter = document.getElementById('productsCounter');
+      
+      currentFilteredList = listToRender;
+      renderedCount = 0;
+
+      if (counter) counter.innerText = `(${currentFilteredList.length} منتج)`;
+
+      if (currentFilteredList.length === 0) {
+        container.innerHTML = `<div style="grid-column: 1 / -1; text-align:center; padding:40px 20px; color:var(--text-muted);">عذراً، لم يتم العثور على مكمل مطابق لبحثك.</div>`;
+        document.getElementById('loadMoreContainer').style.display = 'none';
+        return;
+      }
+
+      const initialSlice = currentFilteredList.slice(0, BATCH_SIZE);
+      const htmlParts = new Array(initialSlice.length);
+      for (let i = 0; i < initialSlice.length; i++) {
+        htmlParts[i] = createProductCardHTML(initialSlice[i]);
+      }
+      container.innerHTML = htmlParts.join('');
+      renderedCount = initialSlice.length;
+      updateLoadMoreButton();
+    }
+
+    function loadMoreProducts() {
+      if (renderedCount >= currentFilteredList.length) return;
+      const container = document.getElementById('productsList');
+      const nextSlice = currentFilteredList.slice(renderedCount, renderedCount + BATCH_SIZE);
+      const htmlParts = new Array(nextSlice.length);
+      for (let i = 0; i < nextSlice.length; i++) {
+        htmlParts[i] = createProductCardHTML(nextSlice[i]);
+      }
+      container.insertAdjacentHTML('beforeend', htmlParts.join(''));
+      renderedCount += nextSlice.length;
+      updateLoadMoreButton();
+    }
+
+    let scrollTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!scrollTicking) {
+        window.requestAnimationFrame(() => {
+          const backTopBtn = document.getElementById('backToTopBtn');
+          if (backTopBtn) {
+            if (window.scrollY > 350) {
+              backTopBtn.classList.add('visible');
+            } else {
+              backTopBtn.classList.remove('visible');
+            }
+          }
+
+          if (renderedCount < currentFilteredList.length) {
+            const scrollPosition = window.innerHeight + window.scrollY;
+            const threshold = document.body.offsetHeight - 600;
+            if (scrollPosition >= threshold) {
+              loadMoreProducts();
+            }
+          }
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    }, { passive: true });
+
+    function scrollToTopSmooth() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function setActiveCategoryUI(catName) {
+      const items = document.querySelectorAll('.cat-item');
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].innerText.trim() === catName) {
+          items[i].classList.add('active');
+          items[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } else {
+          items[i].classList.remove('active');
+        }
+      }
+    }
+
+    function filterCat(catName, el) {
+      if (currentCategory === catName && document.getElementById('searchInput').value === '') return;
+      currentCategory = catName;
+      
+      const items = document.querySelectorAll('.cat-item');
+      for (let i = 0; i < items.length; i++) {
+        items[i].classList.remove('active');
+      }
+      if (el) {
+        el.classList.add('active');
+      } else {
+        setActiveCategoryUI(catName);
+      }
+      
+      document.getElementById('searchInput').value = '';
+      document.getElementById('clearSearchBtn').style.display = 'none';
+
+      const targetList = categoryCache[catName] || validProductsCache;
+      renderProducts(targetList);
+    }
+
+    function resetToAllHome() {
+      closeSideDrawer();
+      closeDetail();
+      closeCartScreen();
+      closePromoPage();
+      closeExploreScreen();
+      closeBrandsScreen();
+      currentCategory = 'الكل';
+      setActiveCategoryUI('الكل');
+      document.getElementById('searchInput').value = '';
+      document.getElementById('clearSearchBtn').style.display = 'none';
+      renderProducts(validProductsCache);
+      scrollToTopSmooth();
+    }
+
+    function selectHealthHub(catName, pillEl) {
+      const pills = document.querySelectorAll('.hub-pill');
+      pills.forEach(p => p.classList.remove('active'));
+      if (pillEl) pillEl.classList.add('active');
+
+      currentCategory = catName;
+      setActiveCategoryUI(catName);
+      document.getElementById('searchInput').value = '';
+      document.getElementById('clearSearchBtn').style.display = 'none';
+
+      const targetList = categoryCache[catName] || validProductsCache;
+      renderProducts(targetList);
+
+      const anchor = document.getElementById('catalogStartAnchor');
+      if (anchor) {
+        const y = anchor.getBoundingClientRect().top + window.scrollY - 108;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      }
+      showToast(`تم عرض قسم: ${catName}`);
+    }
+
+    function openPromoPage(promoType) {
+      const overlay = document.getElementById('promoOverlay');
+      const badgeEl = document.getElementById('promoBadgeText');
+      const titleEl = document.getElementById('promoMainTitle');
+      const descEl = document.getElementById('promoMainDesc');
+      const headerTitleEl = document.getElementById('promoPageHeaderTitle');
+      const gridEl = document.getElementById('promoProductsGrid');
+
+      let filteredPromo = [];
+      if (promoType === 'energy') {
+        headerTitleEl.innerText = 'عروض الطاقة والبناء';
+        badgeEl.innerText = 'عروض حصرية • خصم يصل إلى 30%';
+        badgeEl.style.background = '#22c55e';
+        badgeEl.style.color = '#052e16';
+        titleEl.innerText = 'مكملات الطاقة والبناء العضلي';
+        descEl.innerText = 'تشكيلة مختارة لرفع الأداء البدني، زيادة التحمل، وتعزيز الاستشفاء العضلي بأعلى نقاء.';
+        filteredPromo = categoryCache['الطاقة'] || validProductsCache.slice(0, 12);
+      } else if (promoType === 'vitamins') {
+        headerTitleEl.innerText = 'فيتامينات الصحة العامة';
+        badgeEl.innerText = 'الأكثر طلباً في فايتالي';
+        badgeEl.style.background = '#3b82f6';
+        badgeEl.style.color = '#fff';
+        titleEl.innerText = 'فيتامينات ومعادن الصحة العامة';
+        descEl.innerText = 'دعم يومي متكامل للمناعة، العظام، التركيز، والحيوية من أشهر العلامات العالمية.';
+        filteredPromo = categoryCache['الفيتامينات'] || validProductsCache.slice(0, 12);
+      } else {
+        headerTitleEl.innerText = 'جديد فايتالي • البروتينات';
+        badgeEl.innerText = 'جديد فايتالي 100%';
+        badgeEl.style.background = '#eab308';
+        badgeEl.style.color = '#1c1917';
+        titleEl.innerText = 'بروتينات وكولاجين وأحماض أمينية نقية';
+        descEl.innerText = 'مكملات البروتين، الكولاجين، والكرياتين النقي لضمان أفضل النتائج وسرعة الامتصاص.';
+        filteredPromo = validProductsCache.filter(p =>
+          p._searchStr.includes('بروتين') ||
+          p._searchStr.includes('كولاجين') ||
+          p._searchStr.includes('كرياتين') ||
+          p._searchStr.includes('bcaa') ||
+          p.category === 'الطاقة'
+        );
+      }
+
+      gridEl.innerHTML = filteredPromo.map(p => createProductCardHTML(p)).join('');
+      overlay.scrollTop = 0;
+      overlay.classList.add('active');
+    }
+
+    function closePromoPage() {
+      document.getElementById('promoOverlay').classList.remove('active');
+    }
+
+    function openBrandsScreen() {
+      const overlay = document.getElementById('brandsOverlay');
+      const grid = document.getElementById('brandsGridList');
+      if (grid && grid.innerHTML.trim() === '') {
+        const brandCounts = new Map();
+        validProductsCache.forEach(p => {
+          const b = (p.brand || '').trim();
+          if (b) brandCounts.set(b, (brandCounts.get(b) || 0) + 1);
+        });
+        const sortedBrands = Array.from(brandCounts.entries()).sort((a, b) => b[1] - a[1]);
+        grid.innerHTML = sortedBrands.map(([brandName, count]) => `
+          <div class="brand-pill-card" onclick="filterByBrand('${brandName.replace(/'/g, "\'")}')">
+            <div>
+              <div style="font-weight:bold; font-size:0.88rem; color:var(--text-color);">${brandName}</div>
+              <div style="font-size:0.74rem; color:var(--accent-light); margin-top:3px;">${count} منتج</div>
+            </div>
+            <i class="fas fa-chevron-left" style="color:var(--text-muted); font-size:0.8rem;"></i>
+          </div>
+        `).join('');
+      }
+      overlay.scrollTop = 0;
+      overlay.classList.add('active');
+    }
+
+    function closeBrandsScreen() {
+      document.getElementById('brandsOverlay').classList.remove('active');
+    }
+
+    function filterByBrand(brandName) {
+      closeBrandsScreen();
+      currentCategory = 'الكل';
+      setActiveCategoryUI('الكل');
+      const matched = validProductsCache.filter(p => (p.brand || '').trim() === brandName);
+      renderProducts(matched.length > 0 ? matched : validProductsCache);
+      showToast(`ماركة: ${brandName} (${matched.length})`);
+      const anchor = document.getElementById('catalogStartAnchor');
+      if (anchor) {
+        const y = anchor.getBoundingClientRect().top + window.scrollY - 108;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      }
+    }
+
+    function openExploreScreen() {
+      const overlay = document.getElementById('exploreOverlay');
+      const trendingContainer = document.getElementById('exploreTrendingList');
+      if (trendingContainer && trendingContainer.innerHTML.trim() === '') {
+        const trendingItems = [
+          productsMap.get(1),
+          productsMap.get(3),
+          productsMap.get(11),
+          productsMap.get(33)
+        ].filter(Boolean);
+        trendingContainer.innerHTML = trendingItems.map(p => `
+          <div class="trending-mini-card" onclick="closeExploreScreen(); openDetail(${p.id})">
+            <div style="background:var(--card-soft); border-radius:10px; height:95px; display:flex; align-items:center; justify-content:center; padding:6px; margin-bottom:8px;">
+              <img src="${p.img}" alt="${p.name}" style="max-height:80px; max-width:100%; object-fit:contain;" loading="lazy">
+            </div>
+            <div style="font-size:0.7rem; color:var(--text-muted);">${p.brand}</div>
+            <div style="font-size:0.8rem; font-weight:bold; color:var(--text-color); height:32px; overflow:hidden; margin:3px 0;">${p.name}</div>
+            <div style="font-size:0.85rem; font-weight:bold; color:var(--accent-light);">${Number(p.price).toLocaleString()} ر.س</div>
+          </div>
+        `).join('');
+      }
+      overlay.scrollTop = 0;
+      overlay.classList.add('active');
+    }
+
+    function closeExploreScreen() {
+      document.getElementById('exploreOverlay').classList.remove('active');
+    }
+
+    function applyExploreFilter(type, value) {
+      closeExploreScreen();
+      if (type === 'cat') {
+        currentCategory = value;
+        setActiveCategoryUI(value);
+        document.getElementById('searchInput').value = '';
+        document.getElementById('clearSearchBtn').style.display = 'none';
+        renderProducts(categoryCache[value] || validProductsCache);
+        showToast(`تم عرض قسم: ${value}`);
+      } else {
+        const keywords = value.split(' ').map(k => k.trim().toLowerCase()).filter(Boolean);
+        currentCategory = 'الكل';
+        setActiveCategoryUI('الكل');
+        const matched = validProductsCache.filter(p => keywords.some(kw => p._searchStr.includes(kw)));
+        renderProducts(matched.length > 0 ? matched : validProductsCache);
+        showToast(`تم عرض المنتجات المختارة (${matched.length})`);
+      }
+      const anchor = document.getElementById('catalogStartAnchor');
+      if (anchor) {
+        const y = anchor.getBoundingClientRect().top + window.scrollY - 108;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      }
+    }
+
+    let searchTimeout = null;
+    function handleSearch() {
+      const inputEl = document.getElementById('searchInput');
+      const clearBtn = document.getElementById('clearSearchBtn');
+      const rawValue = inputEl.value;
+      clearBtn.style.display = rawValue.length > 0 ? 'inline-block' : 'none';
+
+      if (searchTimeout) clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        const query = rawValue.trim().toLowerCase();
+        if (!query) {
+          renderProducts(categoryCache[currentCategory] || validProductsCache);
+          return;
+        }
+
+        const searched = [];
+        for (let i = 0; i < validProductsCache.length; i++) {
+          const p = validProductsCache[i];
+          if (p._searchStr.includes(query)) {
+            searched.push(p);
+          }
+        }
+        renderProducts(searched);
+      }, 250);
+    }
+
+    function clearSearch() {
+      const inputEl = document.getElementById('searchInput');
+      inputEl.value = '';
+      document.getElementById('clearSearchBtn').style.display = 'none';
+      renderProducts(categoryCache[currentCategory] || validProductsCache);
+      inputEl.focus();
+    }
+
+    function shareProduct(id) {
+      const p = productsMap.get(id);
+      if (!p) return;
+      const shareText = `اطلع على هذا المكمل الرائع في متجر مكملات فايتالي: ${p.name} بسعر ${Number(p.price).toLocaleString()} ر.س`;
+      if (navigator.share) {
+        navigator.share({ title: 'مكملات فايتالي', text: shareText, url: window.location.href }).catch(() => {});
+      } else {
+        navigator.clipboard?.writeText(shareText);
+        showToast("تم نسخ تفاصيل المكمل للمشاركة!");
+      }
+    }
+
+    function addToCart(id) {
+      const p = productsMap.get(id);
+      if (!p) return;
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ ...p, qty: 1 });
+      }
+      updateCartBadge();
+      showToast(`✓ تمت إضافة "${p.name}" للسلة`);
+    }
+
+    function updateCartBadge() {
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      const bottomBadge = document.getElementById('cartCount');
+      const headerBadge = document.getElementById('headerCartCount');
+      const countLabel = document.getElementById('cartItemsCountLabel');
+      if (bottomBadge) bottomBadge.innerText = totalCount;
+      if (headerBadge) headerBadge.innerText = totalCount;
+      if (countLabel) countLabel.innerText = `${totalCount} قطعة`;
+    }
+
+    function openDetail(id) {
+      selectedProd = productsMap.get(id);
+      if (!selectedProd) return;
+
+      const imgEl = document.getElementById('detImg');
+      if (selectedProd.img && selectedProd.img.trim() !== '') {
+        imgEl.src = selectedProd.img;
+        imgEl.style.display = 'block';
+      } else {
+        imgEl.style.display = 'none';
+      }
+
+      document.getElementById('detBrand').innerText = selectedProd.brand || 'فايتالي';
+      document.getElementById('detTitle').innerText = selectedProd.name;
+      document.getElementById('detPrice').innerText = Number(selectedProd.price).toLocaleString() + ' ر.س';
+
+      const featUl = document.getElementById('detFeatures');
+      if (Array.isArray(selectedProd.features)) {
+        featUl.innerHTML = selectedProd.features
+          .filter(f => f && f.trim() !== '')
+          .map(f => `<li>${f}</li>`)
+          .join('');
+      } else {
+        featUl.innerHTML = '';
+      }
+
+      document.getElementById('detailOverlay').classList.add('active');
+    }
+
+    function closeDetail() {
+      document.getElementById('detailOverlay').classList.remove('active');
+    }
+
+    function addToCartFromDetail() {
+      if (selectedProd) {
+        addToCart(selectedProd.id);
+        closeDetail();
+      }
+    }
+
+    function openCartScreen() {
+      const container = document.getElementById('cartItemsList');
+      updateCartBadge();
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; color:var(--text-muted); margin-top:54px;">
+            <div style="width: 64px; height: 64px; margin: 0 auto 12px auto; border-radius: 50%; background: var(--card-bg); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; color: var(--accent-light); font-size: 1.5rem;">
+              <i class="fas fa-shopping-bag"></i>
+            </div>
+            <div style="font-weight: bold; color: var(--text-color); margin-bottom: 4px;">سلة التسوق فارغة حالياً</div>
+            <div style="font-size: 0.8rem;">أضف المكملات التي تناسبك لتظهر هنا بكل هدوء وترتيب.</div>
+          </div>
+        `;
+        document.getElementById('cartTotalPrice').innerText = '0 ر.س';
+        document.getElementById('cartOverlay').classList.add('active');
+        return;
+      }
+
+      let totalPrice = 0;
+      const itemsHTML = cart.map(item => {
+        const itemSubtotal = Number(item.price) * item.qty;
+        totalPrice += itemSubtotal;
+        const thumbSrc = item.img && item.img.trim() !== '' ? item.img : '';
+        return `
+          <div class="cart-item-card">
+            <div class="cart-thumb-box">
+              ${thumbSrc ? `<img src="${thumbSrc}" alt="${item.name}">` : `<i class="fas fa-capsules" style="color: var(--accent-light);"></i>`}
+            </div>
+            <div style="flex:1; min-width: 0;">
+              <div style="font-size: 0.7rem; color: var(--text-muted);">${item.brand || 'فايتالي'}</div>
+              <div style="font-weight:bold; font-size:0.86rem; color: var(--text-color); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${item.name}</div>
+              <div style="color:var(--accent-light); font-size:0.84rem; font-weight: bold; margin-top:4px;">${itemSubtotal.toLocaleString()} ر.س</div>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px; flex-shrink: 0;">
+              <button onclick="changeQty(${item.id}, -1)" style="background:var(--card-soft); color:var(--text-color); border:1px solid var(--border-color); width:26px; height:26px; border-radius:8px; cursor:pointer; font-weight:bold;">-</button>
+              <span style="font-weight:bold; min-width: 18px; text-align: center; font-size: 0.85rem;">${item.qty}</span>
+              <button onclick="changeQty(${item.id}, 1)" style="background:var(--accent-deep); color:#fff; border:none; width:26px; height:26px; border-radius:8px; cursor:pointer; font-weight:bold;">+</button>
+              <i class="fas fa-trash" style="color:#ef4444; cursor:pointer; padding:5px; font-size: 0.85rem;" onclick="removeFromCart(${item.id})"></i>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      container.innerHTML = itemsHTML;
+      document.getElementById('cartTotalPrice').innerText = totalPrice.toLocaleString() + ' ر.س';
+      document.getElementById('cartOverlay').classList.add('active');
+    }
+
+    function changeQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(i => i.id !== id);
+      }
+      updateCartBadge();
+      openCartScreen();
+    }
+
+    function closeCartScreen() {
+      document.getElementById('cartOverlay').classList.remove('active');
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(item => item.id !== id);
+      updateCartBadge();
+      openCartScreen();
+    }
+
+    function clearCart() {
+      cart = [];
+      updateCartBadge();
+      openCartScreen();
+    }
+
+    function checkoutToWhatsApp() {
+      if (cart.length === 0) {
+        showToast("السلة فارغة، اختر مكملات أولاً!");
+        return;
+      }
+
+      let customerInfoLine = '';
+      try {
+        const userData = JSON.parse(localStorage.getItem('vitali_user_session') || 'null');
+        if (userData && userData.name) {
+          customerInfoLine = `العميل: *${userData.name}*${userData.phone ? ` (${userData.phone})` : ''}%0A`;
+        }
+      } catch (e) {}
+
+      let message = `مرحباً، أود طلب المكملات التالية من متجر مكملات فايتالي:%0A${customerInfoLine}%0A`;
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        let itemTotal = Number(item.price) * item.qty;
+        total += itemTotal;
+        message += `${index + 1}. *${item.name}* - الكمية: ${item.qty} - السعر: ${itemTotal.toLocaleString()} ر.س%0A`;
+      });
+
+      message += `%0A*إجمالي المبلغ المطلوب:* ${total.toLocaleString()} ر.س%0Aبانتظار تأكيد الطلب. شكراً لك!`;
+
+      const myWhatsAppNumber = "967777502849"; 
+      const whatsappUrl = `https://wa.me/${myWhatsAppNumber}?text=${message}`;
+      
+      window.open(whatsappUrl, '_blank');
+    }
+
+    function showHome() {
+      closeSideDrawer();
+      closeDetail();
+      closeCartScreen();
+      closePromoPage();
+      closeExploreScreen();
+      closeBrandsScreen();
+    }
+
+    renderProducts();
+    updateUserDrawerUI();
+
+    setTimeout(() => {
+      openLoginModal(true);
+    }, 180);
+
+    const layouts = [
+      { cols: 2, className: '', icon: 'fas fa-th-large' },
+      { cols: 3, className: 'cols-3', icon: 'fas fa-th' },
+      { cols: 4, className: 'cols-4', icon: 'fas fa-grip-horizontal' }
+    ];
+
+    let currentLayoutIndex = 0;
+
+    function cycleLayout() {
+      currentLayoutIndex = (currentLayoutIndex + 1) % layouts.length;
+      const current = layouts[currentLayoutIndex];
+      
+      const grid = document.getElementById('productsList');
+      const iconElem = document.getElementById('layoutIcon');
+
+      if (grid) {
+        grid.className = 'products-grid' + (current.className ? ' ' + current.className : '');
+      }
+
+      if (iconElem) {
+        iconElem.className = current.icon;
+      }
+    }
+  </script>
+</body>
+</html>
